@@ -8,7 +8,8 @@
 
 <p>
     <a asp-action="Create">
-        <button class="button">New Movie</button>
+        New Movie
+        @*<button class="button"></button>*@
     </a>
 </p>
 <form asp-action="Index" method="get">
@@ -50,15 +51,16 @@
         @foreach (var item in Model)
         {
         <tr>
-            <td>
+            <td >
                 @Html.DisplayFor(modelItem => item.Title)
+                @*<span class="CellComment"> @Html.DisplayFor(modelItem => item.description)</span>*@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Category.CategoryName)
             </td>
             @*<td>
-            @Html.DisplayFor(modelItem => item.description)
-        </td>*@
+                @Html.DisplayFor(modelItem => item.description)
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.UploadDate)
             </td>
@@ -68,27 +70,33 @@
             <td>
                 @Html.DisplayFor(modelItem => item.User)
             </td>
+            @*<td>
+                <a asp-action="Index" asp-controller="Comments" asp-route-id="@item.MovieId">Comments</a> |
+                <a asp-action="Edit" asp-route-id="@item.MovieId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.MovieId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.MovieId">Delete</a>
+            </td>*@
             @if (item.User == this.User.Identity.Name)
             {
-                <td>
-                    <a asp-action="Index" asp-controller="Comments" asp-route-id="@item.MovieId">Comments</a> |
-                    <a asp-action="Edit" asp-route-id="@item.MovieId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.MovieId">Description</a> |
-                    <a asp-action="Delete" asp-route-id="@item.MovieId">Delete</a>
-                </td>
+            <td>
+                <a asp-action="Index" asp-controller="Comments" asp-route-id="@item.MovieId">Comments</a> |
+                <a asp-action="Edit" asp-route-id="@item.MovieId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.MovieId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.MovieId">Delete</a>
+            </td>
             }
             else
             {
-                <td>
-                    <a asp-action="Index" asp-controller="Comments" asp-route-id="@item.MovieId">Comments</a> |
-                    <a style="color: currentColor;  cursor: not-allowed;  opacity: 0.5;  text-decoration: none;" href="#">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.MovieId">Description</a> |
-                    <a style="color: currentColor;  cursor: not-allowed;  opacity: 0.5;  text-decoration: none;" href="#">Delete</a>
-                </td>
+            <td>
+                <a asp-action="Index" asp-controller="Comments" asp-route-id="@item.MovieId">Comments</a> |
+                <a style="color: currentColor;  cursor: not-allowed;  opacity: 0.5;  text-decoration: none;" href="#">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.MovieId">Details</a>
+                @*<a style="color: currentColor;  cursor: not-allowed;  opacity: 0.5;  text-decoration: none;" href="#">Details</a>*@ |
+                <a style="color: currentColor;  cursor: not-allowed;  opacity: 0.5;  text-decoration: none;" href="#">Delete</a>
+            </td>
             }
 
         </tr>
-            
         }
     </tbody>
 </table>

@@ -7,14 +7,14 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Title)
+               @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Category)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.description)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.UploadDate)
             </th>
@@ -34,21 +34,22 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
+                <td >
                     @*             @Html.DisplayFor(modelItem => item.Title)*@
-                    <a href="https://s3.us-east-2.amazonaws.com/centennialbucket/@Html.DisplayFor( modelItem => item.FileName)" download>
+                    <a  href="https://s3.us-east-2.amazonaws.com/centennialbucket/@Html.DisplayFor( modelItem => item.FileName)" download >
 
                         @Html.DisplayFor(modelItem => item.Title)
                     </a>
-                   
+                    @*<span class="CellComment"> @Html.DisplayFor(modelItem => item.description)</span>*@
 
                 </td>
+
                 <td>
                     @Html.DisplayFor(modelItem => item.Category.CategoryName)
                 </td>
-                <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => item.description)
-                </td>
+                </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.UploadDate)
                 </td>
