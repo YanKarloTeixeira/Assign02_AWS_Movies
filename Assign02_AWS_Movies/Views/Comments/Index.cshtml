@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Assign02_AWS_Movies.Models.Comment>
+
+@{
+    ViewData["Title"] = "COMMENTS";
+}
+
+<h2 style="color:red;">@ViewData["MovieTitle"] comments </h2>
+
+<p>
+    <a asp-action="Create">
+        <button class="btn btn-primary">New Comment</button>
+    </a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            @*<th>
+            @Html.DisplayNameFor(model => model.User)
+        </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.CommentDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CommentText)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.value)
+            </th>
+            <th>
+                Made BY
+            </th>
+            @*<th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Movie)
+        </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.User)
+        </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.CommentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommentText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.value)
+            </td>
+            <td>
+            @Html.DisplayFor(modelItem => item.User)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Movie.FileName)
+            </td>*@
+            @if (item.User == this.User.Identity.Name)
+            {
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.CommentId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.CommentId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.CommentId">Delete</a>
+                </td>
+            }
+            else
+            {
+                <td>
+                    <a style="color: currentColor;  cursor: not-allowed;  opacity: 0.5;  text-decoration: none;" href="#">Edit</a> |
+                    <a style="color: currentColor;  cursor: not-allowed;  opacity: 0.5;  text-decoration: none;" href="#">Details</a> |
+                    <a style="color: currentColor;  cursor: not-allowed;  opacity: 0.5;  text-decoration: none;" href="#">Delete</a> 
+                </td>
+            }
+        </tr>
+        }
+    </tbody>
+</table>
