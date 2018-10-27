@@ -72,8 +72,8 @@
             {
                 <td>
                     <a style="color: currentColor;  cursor: not-allowed;  opacity: 0.5;  text-decoration: none;" href="#">Edit</a> |
-                    <a style="color: currentColor;  cursor: not-allowed;  opacity: 0.5;  text-decoration: none;" href="#">Details</a> |
-                    <a style="color: currentColor;  cursor: not-allowed;  opacity: 0.5;  text-decoration: none;" href="#">Delete</a> 
+                    <a asp-action="Details" asp-route-id="@item.CommentId">Details</a> |
+                    <a style="color: currentColor;  cursor: not-allowed;  opacity: 0.5;  text-decoration: none;" href="#">Delete</a>
                 </td>
             }
         </tr>

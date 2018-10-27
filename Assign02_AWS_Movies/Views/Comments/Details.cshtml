@@ -43,6 +43,13 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.CommentId">Edit</a> |
+    @if (Model.User == this.User.Identity.Name) {
+        <a asp-action="Edit" asp-route-id="@Model.CommentId">Edit</a> 
+    }
+    else
+    {
+        <a>Edit</a>
+    }
+    |
     <a asp-action="Index">Back to List</a>
 </div>

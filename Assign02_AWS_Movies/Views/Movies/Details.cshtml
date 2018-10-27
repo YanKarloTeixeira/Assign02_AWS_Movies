@@ -17,44 +17,53 @@
             @Html.DisplayFor(model => model.Title)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.description)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.description)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.UploadDate)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.UploadDate)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.FileName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.FileName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Downloads)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Downloads)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.User)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.User)
-        </dd>
-        <dt>
             @Html.DisplayNameFor(model => model.Category)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Category.CategoryName)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
     </dl>
+    @*<dt>
+                @Html.DisplayNameFor(model => model.UploadDate)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.UploadDate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.FileName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.FileName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Downloads)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Downloads)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.User)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.User)
+            </dd>
+        </dl>*@
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.MovieId">Edit</a> |
+    @if (Model.User == this.User.Identity.Name)
+    {
+            <a asp-action="Edit" asp-route-id="@Model.MovieId">Edit</a>
+    }
+    else
+    {
+    <a>Edit</a> 
+    }
+    |
     <a asp-action="Index">Back to List</a>
 </div>
