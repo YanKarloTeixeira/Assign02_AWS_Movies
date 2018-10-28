@@ -24,9 +24,14 @@
         </form>
     </div>
 </div>
-
 <div>
-    <a asp-action="Index">Back to List</a>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    <a onclick="goBack()">Previous Page</a>
+
 </div>
 
 @section Scripts {

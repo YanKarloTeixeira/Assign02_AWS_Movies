@@ -1,7 +1,7 @@
 
 {
     "comment" : "This file is used to help set default values when using the dotnet CLI extension Amazon.ElasticBeanstalk.Tools. For more information run \"dotnet eb --help\" from the project root.",
-    "profile" : "profile4ElasticBeans",
+    "profile" : "Assign02Movie",
     "region"  : "us-east-1",
     "application" : "Assign02AWSMovies",
     "environment" : "Assign02AWSMovies-dev",

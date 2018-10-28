@@ -1,7 +1,7 @@
 ﻿@model Assign02_AWS_Movies.Models.Movie
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Movie Description";
 }
 
 <h2>Details</h2>
@@ -55,15 +55,24 @@
             </dd>
         </dl>*@
 </div>
-<div>
+<div style=" width:40%;">
     @if (Model.User == this.User.Identity.Name)
     {
-            <a asp-action="Edit" asp-route-id="@Model.MovieId">Edit</a>
+        <a asp-action="Edit" asp-route-id="@Model.MovieId">Edit</a>
     }
     else
     {
-    <a>Edit</a> 
+        <a>Edit</a>
     }
     |
-    <a asp-action="Index">Back to List</a>
+    <div>
+        <script>
+        function goBack() {
+            window.history.back();
+        }
+        </script>
+        <a onclick="goBack()">Previous Page</a>
+
+    </div>
+
 </div>

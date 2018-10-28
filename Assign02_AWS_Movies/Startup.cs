@@ -73,8 +73,9 @@ namespace Assign02_AWS_Movies
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
+                    //template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Movies}/{action=DownloadList}/{id?}");
+        });
 
             DbInitializer.Initialize(context);
         }

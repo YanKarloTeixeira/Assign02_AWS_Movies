@@ -1,23 +1,27 @@
 ﻿@model IEnumerable<Assign02_AWS_Movies.Models.Movie>
+@{
+    ViewData["Title"] = "Download Movies";
+}
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<h2 style=" color:red;"> @ViewData["Title"]</h2>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-               @Html.DisplayNameFor(model => model.Title)
+                @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Category)
             </th>
             @*<th>
-                @Html.DisplayNameFor(model => model.description)
-            </th>*@
+                    @Html.DisplayNameFor(model => model.description)
+                </th>*@
             <th>
-                @Html.DisplayNameFor(model => model.UploadDate)
+                @*@Html.DisplayNameFor(model => model.UploadDate)*@
+                Upload Date
             </th>
+
             @*<th>
                     @Html.DisplayNameFor(model => model.FileName)
                 </th>*@
@@ -34,22 +38,30 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td >
+                <td>
                     @*             @Html.DisplayFor(modelItem => item.Title)*@
-                    <a  href="https://s3.us-east-2.amazonaws.com/centennialbucket/@Html.DisplayFor( modelItem => item.FileName)" download >
+                    @if (String.IsNullOrEmpty(this.User.Identities.ToString()))
+                    {
+                        <a href="https://s3.us-east-2.amazonaws.com/centennialbucket/@Html.DisplayFor(modelItem => item.FileName)" download>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </a>
+                        @*<span class="CellComment"> @Html.DisplayFor(modelItem => item.description)</span>*@
+                    }
+                    else
+                    {
+                        <a>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </a>
 
-                        @Html.DisplayFor(modelItem => item.Title)
-                    </a>
-                    @*<span class="CellComment"> @Html.DisplayFor(modelItem => item.description)</span>*@
-
+                    }
                 </td>
 
                 <td>
                     @Html.DisplayFor(modelItem => item.Category.CategoryName)
                 </td>
                 @*<td>
-                    @Html.DisplayFor(modelItem => item.description)
-                </td>*@
+                        @Html.DisplayFor(modelItem => item.description)
+                    </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.UploadDate)
                 </td>
@@ -63,9 +75,9 @@
                         @Html.DisplayFor(modelItem => item.User)
                     </td>*@
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.MovieId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.MovieId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.MovieId">Delete</a>
+                    @*<a asp-action="Edit" asp-route-id="@item.MovieId">Edit</a> |*@
+                    <a asp-action="Details" asp-route-id="@item.MovieId">Description</a>
+                    @*                    <a asp-action="Delete" asp-route-id="@item.MovieId">Delete</a>*@
                 </td>
             </tr>
         }
