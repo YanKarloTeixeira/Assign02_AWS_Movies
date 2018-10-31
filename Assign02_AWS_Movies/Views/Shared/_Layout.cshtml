@@ -34,7 +34,10 @@
                     @*<li><a asp-area="" asp-controller="Movies" asp-action="DownloadList">Home</a></li>*@
                     <li><a asp-area="" asp-controller="Movies" asp-action="DownloadList">Download Movies</a></li>
                     <li><a asp-area="" asp-controller="Movies" asp-action="Index">Movies Management</a></li>
-                    <li><a asp-area="" asp-controller="Categories" asp-action="Index">Movies Categories</a></li>
+                    @if (this.User.Identity.Name != "")
+                    {
+                        <li><a asp-area="" asp-controller="Categories" asp-action="Index">Movies Categories</a></li>
+                    }
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>

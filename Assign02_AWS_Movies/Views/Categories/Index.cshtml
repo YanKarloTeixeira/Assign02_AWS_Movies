@@ -31,7 +31,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.CategoryName)
                 </td>
-                @if (!String.IsNullOrEmpty(this.User.Identities.ToString()))
+                @if (!String.IsNullOrEmpty(this.User.Identities.ToString()) && this.User.Identity.Name != null)
                 {
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.CategoryId">Edit</a> |

@@ -14,7 +14,7 @@ namespace Assign02_AWS_Movies.Controllers
     public class CommentsController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private int movieId = 0;
+        //private int movieId = 0;
 
         public CommentsController(ApplicationDbContext context)
         {
@@ -77,15 +77,16 @@ namespace Assign02_AWS_Movies.Controllers
         public async Task<IActionResult> Create([Bind("CommentId,User,CommentText,value,UserId,MovieId")] Comment comment)
         {
             comment.CommentDate = DateTime.Now;
-            comment.UserId = this.User.Identity.Name;
+            comment.User = this.User.Identity.Name;
+            int movieId = comment.MovieId;
             if (ModelState.IsValid)
             {
                 _context.Add(comment);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), comment.MovieId);
             }
             ViewData["MovieId"] = new SelectList(_context.Movie, "MovieId", "FileName", comment.MovieId);
-            return View(comment);
+            return View(comment.MovieId);
         }
 
         // GET: Comments/Edit/5
@@ -161,7 +162,7 @@ namespace Assign02_AWS_Movies.Controllers
                 return NotFound();
             }
 
-            return View(comment);
+            return View(comment.MovieId);
         }
 
         // POST: Comments/Delete/5

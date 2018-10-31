@@ -40,7 +40,7 @@
             <tr>
                 <td>
                     @*             @Html.DisplayFor(modelItem => item.Title)*@
-                    @if (String.IsNullOrEmpty(this.User.Identities.ToString()))
+                    @if (this.User.Identity.Name!=null)
                     {
                         <a href="https://s3.us-east-2.amazonaws.com/centennialbucket/@Html.DisplayFor(modelItem => item.FileName)" download>
                             @Html.DisplayFor(modelItem => item.Title)

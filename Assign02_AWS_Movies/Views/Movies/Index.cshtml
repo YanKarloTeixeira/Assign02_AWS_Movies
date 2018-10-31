@@ -7,14 +7,16 @@
 <h2 style=" color:red;"> @ViewData["Title"]</h2>
 
 <p>
-    @if (String.IsNullOrEmpty(this.User.Identities.ToString()))
+
+    @if (this.User.Identity.Name!=null)
     {
+
         <a asp-action="Create">
             New Movie
             @*<button class="button"></button>*@
         </a>
     }
-</p>
+    </p>
 @*<form asp-action="Index" method="get">
     <div class="form-actions no-color">
         <p>

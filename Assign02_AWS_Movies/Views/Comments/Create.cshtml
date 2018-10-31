@@ -11,12 +11,6 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="User" class="control-label"></label>
-                <input disabled asp-for="User" class="form-control" />
-                <span asp-validation-for="User" class="text-danger"></span>
-            </div>
             <div class="form-group">
                 <label asp-for="CommentText" class="control-label"></label>
                 <input asp-for="CommentText" class="form-control" />
@@ -28,13 +22,7 @@
                 <span asp-validation-for="value" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="UserId" class="control-label"></label>
-                <input disabled asp-for="UserId" class="form-control" />
-                <span asp-validation-for="UserId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MovieId" class="control-label"></label>
-                <select  disabled asp-for="MovieId" class ="form-control" asp-items="ViewBag.MovieId"></select>
+                <select disable hidden="hidden" asp-for="MovieId" class ="form-control" asp-items="ViewBag.MovieId"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
