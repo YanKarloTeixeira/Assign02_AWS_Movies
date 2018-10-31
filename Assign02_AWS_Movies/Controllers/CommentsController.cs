@@ -83,10 +83,10 @@ namespace Assign02_AWS_Movies.Controllers
             {
                 _context.Add(comment);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index), comment.MovieId);
+                return RedirectToAction("Index/" + comment.MovieId); ;
             }
             ViewData["MovieId"] = new SelectList(_context.Movie, "MovieId", "FileName", comment.MovieId);
-            return View(comment.MovieId);
+            return View("Index/" + comment.MovieId);
         }
 
         // GET: Comments/Edit/5
